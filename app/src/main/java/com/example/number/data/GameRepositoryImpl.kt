@@ -1,5 +1,4 @@
 package com.example.number.data
-
 import com.example.number.domain.entity.GameSettings
 import com.example.number.domain.entity.Level
 import com.example.number.domain.entity.Question
