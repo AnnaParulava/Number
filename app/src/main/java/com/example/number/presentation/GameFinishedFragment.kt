@@ -24,6 +24,9 @@ class GameFinishedFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.buttonRetry.setOnClickListener {
+           // retryGame()
+        }
     }
 
     override fun onDestroyView() {
