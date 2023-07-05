@@ -14,7 +14,7 @@ import com.example.number.domain.entity.Question
 import com.example.number.domain.usecases.GenerateQuestionUseCase
 import com.example.number.domain.usecases.GetGameSettingsUseCase
 
-class GameFragmentViewModel(application: Application) : AndroidViewModel(application) {
+class GameFragmentViewModel(application: Application, level: Level) : AndroidViewModel(application) {
 
     private val context = application
 
@@ -68,6 +68,7 @@ class GameFragmentViewModel(application: Application) : AndroidViewModel(applica
         getGameSettings(level)
         startTimer()
         generateQuestion()
+        updateProgress()
     }
 
     fun chooseAnswer(number: Int) {
@@ -91,7 +92,8 @@ class GameFragmentViewModel(application: Application) : AndroidViewModel(applica
     }
 
     private fun calculatePercentOfRightAnswers(): Int {
-        return ((countOfRightAnswers / countOfQuestion.toDouble()) * 100).toInt()
+        return if(countOfQuestion == 0) 0 else
+                ((countOfRightAnswers / countOfQuestion.toDouble()) * 100).toInt()
     }
 
     private fun checkAnswer(number: Int) {
