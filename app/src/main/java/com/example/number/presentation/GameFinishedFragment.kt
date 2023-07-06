@@ -47,37 +47,12 @@ class GameFinishedFragment : Fragment() {
 
     private fun bindViews() {
        binding.gameResult = args.gameResult
-
-        with(binding) {
-            emojiResult.setImageResource(getSmileResId())
-            tvScorePercentage.text = String.format(
-                getString(R.string.score_percentage),
-                getPercentOfRightAnswers()
-            )
-        }
-    }
-
-    private fun getSmileResId(): Int {
-        return if (args.gameResult.winner) {
-            R.drawable.ic_smile
-        } else {
-            R.drawable.ic_sad
-        }
-    }
-
-    private fun getPercentOfRightAnswers() = with(args.gameResult) {
-        if (countOfQuestions == 0) {
-            0
-        } else {
-            ((countOfRightAnswers / countOfQuestions.toDouble()) * 100).toInt()
-        }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
-
 
     private fun retryGame() {
         findNavController().popBackStack()
