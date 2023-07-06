@@ -5,7 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.example.number.R
 import com.example.number.databinding.FragmentChooseLevelBinding
+import com.example.number.domain.entity.Level
 
 class ChooseLevelFragment : Fragment() {
 
@@ -23,6 +26,27 @@ class ChooseLevelFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        with(binding) {
+            buttonLevelTest.setOnClickListener {
+                launchGameFragment(Level.TEST)
+            }
+            buttonLevelEasy.setOnClickListener {
+                launchGameFragment(Level.EASY)
+            }
+            buttonLevelNormal.setOnClickListener {
+                launchGameFragment(Level.NORMAL)
+            }
+            buttonLevelHard.setOnClickListener {
+                launchGameFragment(Level.HARD)
+            }
+        }
+    }
+
+    private fun launchGameFragment(level: Level){
+        val args = Bundle().apply {
+            putParcelable(GameFragment.KEY_LEVEL, level)
+        }
+        findNavController().navigate(R.id.action_chooseLevelFragment2_to_gameFragment3, args)
 
     }
 

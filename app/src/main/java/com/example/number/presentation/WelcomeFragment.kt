@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.example.number.R
 import com.example.number.databinding.FragmentWelcomeBinding
 
 class WelcomeFragment : Fragment() {
@@ -24,8 +26,12 @@ class WelcomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.buttonUnderstand.setOnClickListener {
-
+            launchChooseLevelFragment()
         }
+    }
+
+    private fun launchChooseLevelFragment(){
+        findNavController().navigate(R.id.action_welcomeFragment_to_chooseLevelFragment2)
     }
 
     override fun onDestroyView() {
